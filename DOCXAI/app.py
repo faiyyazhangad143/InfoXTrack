@@ -6,7 +6,7 @@ from io import BytesIO
 from PIL import Image
 
 
-OPENROUTER_API_KEY = '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'
+OPENROUTER_API_KEY = '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'
 
 # Function to encode the image into base64 format
 def encode_image(img):
@@ -73,13 +73,13 @@ if file_option == "Custom Upload":
 # Display image based on file selection
 if uploaded_file is not None or file_option in ["Claim", "Invoice", "Receipt"]:
     if file_option == "Claim":
-        image_path = "E:\\DOCXAI\\Claims.jpg"  # Replace with actual image path or URL
+        image_path = "Claims.jpg"  # Replace with actual image path or URL
         img = Image.open(image_path)
     elif file_option == "Invoice":
-        image_path = "E:\\DOCXAI\\Invoice.jpeg"  # Replace with actual image path or URL
+        image_path = "Invoice.jpeg"  # Replace with actual image path or URL
         img = Image.open(image_path)
     elif file_option == "Receipt":
-        image_path = "E:\\DOCXAI\\Receipt.png"  # Replace with actual image path or URL
+        image_path = "Receipt.png"  # Replace with actual image path or URL
         img = Image.open(image_path)
     elif uploaded_file is not None:
         img = Image.open(uploaded_file)
