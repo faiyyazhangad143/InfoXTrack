@@ -73,13 +73,13 @@ if file_option == "Custom Upload":
 # Display image based on file selection
 if uploaded_file is not None or file_option in ["Claim", "Invoice", "Receipt"]:
     if file_option == "Claim":
-        image_path = "Claims.jpg"  # Replace with actual image path or URL
+        image_path = "./Claims.jpg"  # Replace with actual image path or URL
         img = Image.open(image_path)
     elif file_option == "Invoice":
-        image_path = "Invoice.jpeg"  # Replace with actual image path or URL
+        image_path = "./Invoice.jpeg"  # Replace with actual image path or URL
         img = Image.open(image_path)
     elif file_option == "Receipt":
-        image_path = "Receipt.png"  # Replace with actual image path or URL
+        image_path = "./Receipt.png"  # Replace with actual image path or URL
         img = Image.open(image_path)
     elif uploaded_file is not None:
         img = Image.open(uploaded_file)
