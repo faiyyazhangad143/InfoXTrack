@@ -21,7 +21,7 @@ st.set_page_config(page_title="InfoxTrack", page_icon="📊", layout="wide")
 #Display the title and subtitle at the center of the home page with larger fonts
 st.markdown("""
     <div style="text-align: center;">
-        <h1 style="font-size: 50px;">📊 InfoxTrack</h1>
+        <h1 style="font-size: 50px;">📊 InfoxTract</h1>
         <h3 style="font-size: 30px;">Where Documents Meet Automation</h3>
     </div>
 """, unsafe_allow_html=True)
@@ -29,7 +29,7 @@ st.markdown("""
 
 
 #Sidebar for selecting file and feature with added space
-st.sidebar.title("📊 InfoxTrack")
+st.sidebar.title("📊 InfoxTract")
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
 
 st.sidebar.markdown("""
