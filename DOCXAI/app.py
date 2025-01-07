@@ -6,7 +6,7 @@ from io import BytesIO
 from PIL import Image
 
 
-OPENROUTER_API_KEY = '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'
+OPENROUTER_API_KEY = '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'
 
 # Function to encode the image into base64 format
 def encode_image(img):
@@ -21,44 +21,83 @@ st.set_page_config(page_title="InfoxTrack", page_icon="📊", layout="wide")
 #Display the title and subtitle at the center of the home page with larger fonts
 st.markdown("""
     <div style="text-align: center;">
-        <h1 style="font-size: 50px;">📊 InfoxTract</h1>
-        <h3 style="font-size: 30px;">Where Documents Meet Automation</h3>
+        <h1 style="font-size: 100px;">📊 InfoXtract</h1>
+        <h3 style="font-size: 50px;">Where Documents Meet Automation</h3>
     </div>
 """, unsafe_allow_html=True)
 
 
 
 #Sidebar for selecting file and feature with added space
-st.sidebar.title("📊 InfoxTract")
-st.sidebar.markdown("<br>", unsafe_allow_html=True)
+# st.sidebar.title("📊 InfoxTrack")
+# st.sidebar.markdown("<br>", unsafe_allow_html=True)
+st.sidebar.markdown(
+    "<h1 style='font-size: 80px;'>📊 InfoxTract</h1>",
+    unsafe_allow_html=True
+)
 
-st.sidebar.markdown("""
-    <style>
-    .streamlit-expanderHeader {
-        color: #D1D1D1;  /* Dark white color */
-    }
-    .css-1d391kg {  /* For 'Choose a file' */
-        color: #D1D1D1;
-    }
-    .css-1d391kg select {
-        color: #D1D1D1;
-    }
-    .css-1d391kg option {
-        color: #D1D1D1;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-
-
-# Dropdown for selecting a file
-file_option = st.sidebar.selectbox("Choose a file", ["Select", "Custom Upload", "Claim", "Invoice", "Receipt"])
-# Add vertical space
 st.sidebar.markdown("<br><br>", unsafe_allow_html=True)
 
-# Dropdown for selecting feature
-feature_option = st.sidebar.selectbox("Select Feature", ["Select", "Attribute Value Extraction","Table Detection and Extraction","Named Entity Recognition", "Summarization", "Chat","Document Content Validation","Multi-Modal Document Translation","Document Auto-Categorization","Dynamic SQL Query Generation","Automated Workflow Code Generator",
-"Smart Contract Risk Assessment","Multi-Modal KPI Tracker","Document Sentiment Analysis"])
+st.markdown("""
+    <style>
+    .css-1s5h7v1 {
+        font-size: 20px !important;
+    }
+    .css-1aumxhk {
+        font-size: 20px !important;
+    }
+    .css-1lcbm12 {
+        font-size: 20px !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+
+
+st.sidebar.markdown("<h3 style='font-size: 50px;'>Choose a file</h3>", unsafe_allow_html=True)
+file_option = st.sidebar.selectbox("", ["Select", "Custom Upload", "Claim", "Invoice", "Receipt"])
+st.sidebar.markdown("<br><br><br>", unsafe_allow_html=True)
+
+
+
+# Dropdown for selecting feature with increased text size
+st.sidebar.markdown("<h3 style='font-size: 50px;'>Select Feature</h3>", unsafe_allow_html=True)
+feature_option = st.sidebar.selectbox("", [
+    "Select", 
+    "Attribute Value Extraction", 
+    "Automated Workflow Code Generator", 
+    "Chat", 
+    "Document Auto-Categorization", 
+    "Document Content Validation",  
+    "Document Sentiment Analysis", 
+    "Dynamic SQL Query Generation", 
+    "Multi-Modal Document Translation", 
+    "Multi-Modal KPI Tracker", 
+    "Named Entity Recognition", 
+    "Smart Contract Risk Assessment", 
+    "Summarization", 
+    "Table Detection and Extraction"
+])
+
+# # Dropdown for selecting feature
+# feature_option = st.sidebar.selectbox("Select Feature", [
+#     "Select", 
+#     "Attribute Value Extraction", 
+#     "Automated Workflow Code Generator", 
+#     "Chat", 
+#     "Document Auto-Categorization", 
+#     "Document Content Validation", 
+#     "Document Sentiment Analysis", 
+#     "Document Sentiment Analysis", 
+#     "Dynamic SQL Query Generation", 
+#     "Multi-Modal Document Translation", 
+#     "Multi-Modal KPI Tracker", 
+#     "Named Entity Recognition", 
+#     "Smart Contract Risk Assessment", 
+#     "Summarization", 
+#     "Table Detection and Extraction"
+# ])
+
 
 
 uploaded_file = None
@@ -73,17 +112,13 @@ if file_option == "Custom Upload":
 # Display image based on file selection
 if uploaded_file is not None or file_option in ["Claim", "Invoice", "Receipt"]:
     if file_option == "Claim":
-        
-        image_path = "DOCXAI\\Claims.jpg"
-    
-         
-        
+        image_path = "E:\\DOCXAI\\Claims.jpg"  # Replace with actual image path or URL
         img = Image.open(image_path)
     elif file_option == "Invoice":
-        image_path = "DOCXAI\\Invoice.jpeg"  # Replace with actual image path or URL
+        image_path = "E:\\DOCXAI\\Invoice.jpeg"  # Replace with actual image path or URL
         img = Image.open(image_path)
     elif file_option == "Receipt":
-        image_path = "DOCXAI\\Receipt.png"  # Replace with actual image path or URL
+        image_path = "E:\\DOCXAI\\Receipt.png"  # Replace with actual image path or URL
         img = Image.open(image_path)
     elif uploaded_file is not None:
         img = Image.open(uploaded_file)
