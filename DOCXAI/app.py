@@ -21,83 +21,44 @@ st.set_page_config(page_title="InfoxTrack", page_icon="📊", layout="wide")
 #Display the title and subtitle at the center of the home page with larger fonts
 st.markdown("""
     <div style="text-align: center;">
-        <h1 style="font-size: 100px;">📊 InfoXtract</h1>
-        <h3 style="font-size: 50px;">Where Documents Meet Automation</h3>
+        <h1 style="font-size: 50px;">📊 InfoxTract</h1>
+        <h3 style="font-size: 30px;">Where Documents Meet Automation</h3>
     </div>
 """, unsafe_allow_html=True)
 
 
 
 #Sidebar for selecting file and feature with added space
-# st.sidebar.title("📊 InfoxTrack")
-# st.sidebar.markdown("<br>", unsafe_allow_html=True)
-st.sidebar.markdown(
-    "<h1 style='font-size: 80px;'>📊 InfoxTract</h1>",
-    unsafe_allow_html=True
-)
+st.sidebar.title("📊 InfoxTract")
+st.sidebar.markdown("<br>", unsafe_allow_html=True)
 
-st.sidebar.markdown("<br><br>", unsafe_allow_html=True)
-
-st.markdown("""
+st.sidebar.markdown("""
     <style>
-    .css-1s5h7v1 {
-        font-size: 20px !important;
+    .streamlit-expanderHeader {
+        color: #D1D1D1;  /* Dark white color */
     }
-    .css-1aumxhk {
-        font-size: 20px !important;
+    .css-1d391kg {  /* For 'Choose a file' */
+        color: #D1D1D1;
     }
-    .css-1lcbm12 {
-        font-size: 20px !important;
+    .css-1d391kg select {
+        color: #D1D1D1;
+    }
+    .css-1d391kg option {
+        color: #D1D1D1;
     }
     </style>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 
 
-st.sidebar.markdown("<h3 style='font-size: 50px;'>Choose a file</h3>", unsafe_allow_html=True)
-file_option = st.sidebar.selectbox("", ["Select", "Custom Upload", "Claim", "Invoice", "Receipt"])
-st.sidebar.markdown("<br><br><br>", unsafe_allow_html=True)
+# Dropdown for selecting a file
+file_option = st.sidebar.selectbox("Choose a file", ["Select", "Custom Upload", "Claim", "Invoice", "Receipt"])
+# Add vertical space
+st.sidebar.markdown("<br><br>", unsafe_allow_html=True)
 
-
-
-# Dropdown for selecting feature with increased text size
-st.sidebar.markdown("<h3 style='font-size: 50px;'>Select Feature</h3>", unsafe_allow_html=True)
-feature_option = st.sidebar.selectbox("", [
-    "Select", 
-    "Attribute Value Extraction", 
-    "Automated Workflow Code Generator", 
-    "Chat", 
-    "Document Auto-Categorization", 
-    "Document Content Validation",  
-    "Document Sentiment Analysis", 
-    "Dynamic SQL Query Generation", 
-    "Multi-Modal Document Translation", 
-    "Multi-Modal KPI Tracker", 
-    "Named Entity Recognition", 
-    "Smart Contract Risk Assessment", 
-    "Summarization", 
-    "Table Detection and Extraction"
-])
-
-# # Dropdown for selecting feature
-# feature_option = st.sidebar.selectbox("Select Feature", [
-#     "Select", 
-#     "Attribute Value Extraction", 
-#     "Automated Workflow Code Generator", 
-#     "Chat", 
-#     "Document Auto-Categorization", 
-#     "Document Content Validation", 
-#     "Document Sentiment Analysis", 
-#     "Document Sentiment Analysis", 
-#     "Dynamic SQL Query Generation", 
-#     "Multi-Modal Document Translation", 
-#     "Multi-Modal KPI Tracker", 
-#     "Named Entity Recognition", 
-#     "Smart Contract Risk Assessment", 
-#     "Summarization", 
-#     "Table Detection and Extraction"
-# ])
-
+# Dropdown for selecting feature
+feature_option = st.sidebar.selectbox("Select Feature", ["Select", "Attribute Value Extraction","Table Detection and Extraction","Named Entity Recognition", "Summarization", "Chat","Document Content Validation","Multi-Modal Document Translation","Document Auto-Categorization","Dynamic SQL Query Generation","Automated Workflow Code Generator",
+"Smart Contract Risk Assessment","Multi-Modal KPI Tracker","Document Sentiment Analysis"])
 
 
 uploaded_file = None
@@ -112,7 +73,11 @@ if file_option == "Custom Upload":
 # Display image based on file selection
 if uploaded_file is not None or file_option in ["Claim", "Invoice", "Receipt"]:
     if file_option == "Claim":
-        image_path = "DOCXAI\\Claims.jpg"  # Replace with actual image path or URL
+        
+        image_path = "DOCXAI\\Claims.jpg"
+    
+         
+        
         img = Image.open(image_path)
     elif file_option == "Invoice":
         image_path = "DOCXAI\\Invoice.jpeg"  # Replace with actual image path or URL
@@ -126,6 +91,8 @@ if uploaded_file is not None or file_option in ["Claim", "Invoice", "Receipt"]:
     # Display the image on the main page
     st.image(img, caption="Uploaded Image", use_column_width=True)
     base64_img = encode_image(img)
+
+
 
     # Chat feature
     if feature_option == "Chat":
